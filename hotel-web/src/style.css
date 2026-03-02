@@ -1,17 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-    /* Background color */
     --color-brand-bg: #251D18;
-
-    /* Secondary backgrounds */
     --color-brand-surface: #382C24;
-
-    /* Main color = buttons, hotel icons */
     --color-brand-primary: #D4AF37;
     --color-brand-primary-hover: #EBC352;
-
-    /* Text */
     --color-brand-text: #FDFBF8;
     --color-brand-muted: #A39385;
 }

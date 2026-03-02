@@ -7,26 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gran Hotel Paraíso - UX & Accesibilidad</title>
 
-  <!-- Carga Directa y Preloads Críticos -->
   <link rel="preload" as="image" href="/img/header-img.webp" fetchpriority="high">
-  <!-- Carga Directa Frontal -->
   <link rel="stylesheet" href="/src/style.css" />
-  <link defer rel="modulepreload" href="/src/main.js" />
+  <link rel="modulepreload" href="/src/main.js" />
 </head>
 
 <body class="antialiased">
-  <!-- Header con Hero Image y Video -->
   <header class="relative w-full h-screen mx-auto flex flex-col justify-end overflow-hidden"
     aria-label="Introducción visual del hotel">
 
-    <!-- Contenedores Multimedia -->
     <img id="header-img" src="/img/header-img.webp" width="1920" height="1080" fetchpriority="high"
       alt="Vista exterior impresionante de Gran Hotel Paraíso al atardecer, destacando la piscina y arquitectura"
       class="absolute inset-0 w-full h-full object-cover z-0">
     <video id="header-video" src="/videos/header_video_comprimido.mp4" width="1920" height="1080"
       class="absolute inset-0 w-full h-full object-cover z-0 hidden" controls></video>
 
-    <!-- Capa Oscura Accesible y UI -->
     <!-- Contraste de texto WCAG AAA garantizado mediante fondo oscuro con blur -->
     <div id="header-overlay" class="absolute inset-0 bg-black/40 z-10 transition-opacity duration-500"></div>
 
@@ -40,7 +35,6 @@
       </div>
     </div>
 
-    <!-- Botón Play Centralizado -->
     <button id="play-btn" aria-label="Reproducir video de introducción del hotel"
       class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 bg-[#D4AF37] text-[#251D18] rounded-full p-6 shadow-[0_0_40px_rgba(212,175,55,0.4)] transition-all hover:scale-110 hover:bg-[#EBC352] focus:outline-none focus:ring-4 focus:ring-[#D4AF37] focus:ring-offset-4 focus:ring-offset-black cursor-pointer group border-4 border-[#251D18]/20">
       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
@@ -51,7 +45,6 @@
     </button>
   </header>
 
-  <!-- Contenido Principal - Galería -->
   <main class="py-20 px-4 md:px-8 lg:px-12 w-full mx-auto max-w-7xl">
     <section aria-labelledby="gallery-title">
       <header class="mb-12 text-center md:text-left">
@@ -61,10 +54,7 @@
         </p>
       </header>
 
-      <!-- Grid Dinámico: 1 col en mobile, hast 4 col en desktop -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8" id="gallery-grid">
-        <!-- Renderizado dinámico desde JS aquí -->
-      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8" id="gallery-grid"></div>
     </section>
   </main>
 
@@ -82,7 +72,7 @@
     </div>
   </footer>
 
-  <!-- Modal Accesible (Trapped Focus) -->
+  <!-- Modal Accesible con Trapped Focus para prevenir navegacion fuera del componente -->
   <div id="image-modal"
     class="fixed inset-0 z-50 flex items-center justify-center bg-black/95 hidden opacity-0 transition-opacity duration-300 p-4"
     role="dialog" aria-modal="true" aria-labelledby="modal-title">
@@ -99,13 +89,11 @@
         </svg>
       </button>
 
-      <!-- Imagen Destacada Modal -->
       <div
         class="w-full lg:w-[55%] xl:w-[60%] h-[35vh] sm:h-[45vh] lg:h-auto bg-black relative flex-shrink-0 border-b lg:border-b-0 lg:border-r border-white/5">
         <img id="modal-main-img" src="" alt="" class="w-full h-full object-cover animate-fade-in" loading="eager">
       </div>
 
-      <!-- Información y Carrusel filtrado -->
       <div class="w-full lg:w-[45%] xl:w-[40%] p-6 lg:p-8 flex flex-col justify-between overflow-y-auto">
         <div class="mb-8">
           <span id="modal-category-badge"
@@ -120,15 +108,11 @@
             <span class="flex-grow h-px bg-white/5"></span>
           </h4>
 
-          <!-- Carrusel Horizontal Accesible -->
           <div id="modal-carousel" class="flex gap-4 overflow-x-auto pb-4 pt-1 px-1 -mx-1 snap-x snap-mandatory"
-            aria-label="Galería de imágenes relacionadas">
-            <!-- Miniaturas JS -->
-          </div>
+            aria-label="Galería de imágenes relacionadas"></div>
         </div>
       </div>
     </div>
-
   </div>
 
   <script type="module" src="/src/main.js"></script>

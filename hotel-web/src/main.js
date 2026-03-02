@@ -1,4 +1,3 @@
-// Logica principal de Interfaz y Datos
 const categoryDescs = {
     'first-hotel': 'Disfruta del máximo nivel de lujo con espacios amplios, vistas panorámicas inigualables y servicios exclusivos. Esta luminosa suite ha sido diseñada pensando en el confort absoluto y cuenta con mobiliario de alta gama y atención al detalle para aquellos que buscan una estancia perfecta.',
     'second-hotel': 'Un entorno espacioso, cómodo y refinado, perfecto para el descanso en compañía. Cuenta con iluminación natural optimizada, cama extra grande ergonómica, comodidades modernas y acabados de primera calidad en todo el recinto.',
@@ -24,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const $ = id => document.getElementById(id);
     $('current-year').textContent = new Date().getFullYear();
 
-    // --- Header Video Interactividad ---
     const uiEls = [$('header-img'), $('header-overlay'), $('header-content'), $('play-btn')];
     const video = $('header-video');
 
@@ -40,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         video.classList.remove('hidden');
         video.play().catch(() => {
             video.classList.add('hidden');
-            toggleUI(true); // Fallback si falla el video
+            toggleUI(true); // Fallback amigable si falla Auto-Play
         });
         setTimeout(() => { if (!video.paused) toggleUI(false); }, 500);
     });
@@ -50,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleUI(true);
     });
 
-    // --- Modal y Galería ---
     const modal = $('image-modal'), modalContent = $('modal-content'), carousel = $('modal-carousel');
     const mImg = $('modal-main-img'), mTitle = $('modal-title'), mDesc = $('modal-desc'), mBadge = $('modal-category-badge');
     let lastFocus;
@@ -67,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         lastFocus = document.activeElement;
         updateModalInfo(item);
 
-        // Cargar miniaturas dinámicamente
         const catItems = galleryData.filter(i => i.cat === item.cat);
         carousel.innerHTML = catItems.map(i => `
             <button class="flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all cursor-pointer snap-start focus:ring-2 ${i.id === item.id ? 'border-brand-primary opacity-100' : 'border-transparent opacity-60 hover:opacity-100'}">
@@ -75,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
             </button>
         `).join('');
 
-        // Eventos para cada miniatura
         carousel.querySelectorAll('button').forEach((btn, idx) => {
             btn.onclick = () => {
                 updateModalInfo(catItems[idx]);
@@ -100,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     };
 
-    // Renderizado de Galería
     galleryData.forEach(item => {
         const article = document.createElement('article');
         article.className = 'group cursor-pointer rounded-xl bg-brand-surface border border-brand-muted/20 shadow-md transition-all hover:-translate-y-1 hover:shadow-xl focus-within:ring-4 focus-within:ring-brand-primary h-full overflow-hidden relative';
@@ -119,12 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
         $('gallery-grid').appendChild(article);
     });
 
-    // Eventos de cierre y accesibilidad
     $('close-modal').onclick = closeModal;
     modal.onclick = e => e.target === modal && closeModal();
     document.addEventListener('keydown', e => e.key === 'Escape' && !modal.classList.contains('hidden') && closeModal());
 
-    // Focus trap en el modal
+    // Focus trap: Lógica estricta de accesibilidad WCAG para encerrar navegación por teclado dentro de modales abiertos
     modal.onkeydown = e => {
         const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
         if (e.key === 'Tab' && focusable.length) {
