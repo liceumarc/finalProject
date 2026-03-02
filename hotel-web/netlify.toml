@@ -1,0 +1,38 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[[headers]]
+  # Cabeceras de seguridad globales y control básico
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  # Como Vite, por defecto, genera archivos JavaScript y CSS con content hashes 
+  # (ej: main-hj783k.js), es seguro cachearlos para siempre (1 año) en el navegador.
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Cacheado estricto para imágenes locales
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Cacheado estricto para el video del header
+  for = "/videos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Forzar revalidación rápida al HTML principal para que 
+  # cualquier actualización de la web se refleje inmediatamente
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

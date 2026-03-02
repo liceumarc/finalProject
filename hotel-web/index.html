@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="#" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gran Hotel Paraíso - UX & Accesibilidad</title>
+
+  <!-- Carga Directa: Evitamos la cadena de solicitudes críticas en Lighthouse -->
+  <link rel="stylesheet" href="/src/style.css" />
+  <link rel="modulepreload" href="/src/main.js" />
+</head>
+
+<body class="antialiased">
+  <!-- Header con Hero Image y Video -->
+  <header class="relative w-full h-screen mx-auto flex flex-col justify-end overflow-hidden"
+    aria-label="Introducción visual del hotel">
+
+    <!-- Contenedores Multimedia -->
+    <img id="header-img" src="./public/img/header-img.webp" width="1920" height="1080" fetchpriority="high"
+      alt="Vista exterior impresionante de Gran Hotel Paraíso al atardecer, destacando la piscina y arquitectura"
+      class="absolute inset-0 w-full h-full object-cover z-0">
+    <video id="header-video" src="./public/videos/header_video_comprimido.mp4" width="1920" height="1080"
+      class="absolute inset-0 w-full h-full object-cover z-0 hidden" controls></video>
+
+    <!-- Capa Oscura Accesible y UI -->
+    <!-- Contraste de texto WCAG AAA garantizado mediante fondo oscuro con blur -->
+    <div id="header-overlay" class="absolute inset-0 bg-black/40 z-10 transition-opacity duration-500"></div>
+
+    <div id="header-content"
+      class="relative z-20 w-full p-6 md:p-12 lg:p-16 transition-opacity duration-500 max-w-7xl mx-auto flex justify-start">
+      <div class="max-w-2xl bg-black/50 p-6 md:p-8 rounded-2xl backdrop-blur-md border border-white/10 shadow-2xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#FDFBF8] mb-4 tracking-tight shadow-sm">
+          Escápate al Paraíso</h1>
+        <p class="text-lg md:text-xl text-[#FDFBF8]/90 font-medium leading-relaxed">Descubre una experiencia inmersiva
+          con atención al detalle, confort absoluto y accesibilidad incondicional.</p>
+      </div>
+    </div>
+
+    <!-- Botón Play Centralizado -->
+    <button id="play-btn" aria-label="Reproducir video de introducción del hotel"
+      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 bg-[#D4AF37] text-[#251D18] rounded-full p-6 shadow-[0_0_40px_rgba(212,175,55,0.4)] transition-all hover:scale-110 hover:bg-[#EBC352] focus:outline-none focus:ring-4 focus:ring-[#D4AF37] focus:ring-offset-4 focus:ring-offset-black cursor-pointer group border-4 border-[#251D18]/20">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+        class="w-12 h-12 ml-1 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor"
+        aria-hidden="true">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    </button>
+  </header>
+
+  <!-- Contenido Principal - Galería -->
+  <main class="py-20 px-4 md:px-8 lg:px-12 w-full mx-auto max-w-7xl">
+    <section aria-labelledby="gallery-title">
+      <header class="mb-12 text-center md:text-left">
+        <h2 id="gallery-title" class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#FDFBF8] mb-4">Alojamiento y
+          Suites</h2>
+        <p class="text-[#A39385] text-lg max-w-2xl">Explora nuestras amplias y cuidadosamente decoradas habitaciones.
+        </p>
+      </header>
+
+      <!-- Grid Dinámico: 1 col en mobile, hast 4 col en desktop -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8" id="gallery-grid">
+        <!-- Renderizado dinámico desde JS aquí -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-[#382C24] border-t border-[#A39385]/10 py-10 px-4 mt-auto">
+    <div
+      class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      <div>
+        <p class="text-[#FDFBF8] font-black text-2xl mb-1 tracking-wider">Gran Hotel Paraíso</p>
+        <p class="text-[#A39385] text-sm">El arte de la hospitalidad excepcional.</p>
+      </div>
+      <div>
+        <p class="text-[#A39385] text-xs font-medium tracking-widest uppercase">&copy; <span id="current-year"></span>
+          Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Accesible (Trapped Focus) -->
+  <div id="image-modal"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/95 hidden opacity-0 transition-opacity duration-300 p-4"
+    role="dialog" aria-modal="true" aria-labelledby="modal-title">
+
+    <div id="modal-content"
+      class="bg-[#382C24] rounded-2xl flex flex-col lg:flex-row max-w-6xl w-full max-h-[90vh] lg:max-h-[85vh] overflow-hidden relative shadow-2xl border border-white/5 transform scale-95 transition-transform duration-300">
+
+      <button id="close-modal" aria-label="Cerrar ventana de detalles"
+        class="absolute top-4 right-4 z-[60] bg-[#251D18]/80 hover:bg-[#251D18] backdrop-blur-sm border border-white/10 text-[#FDFBF8] rounded-full p-2.5 cursor-pointer transition focus:outline-none focus:ring-4 focus:ring-[#D4AF37] shadow-xl group">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 group-hover:rotate-90 transition-transform text-[#A39385] group-hover:text-white" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Imagen Destacada Modal -->
+      <div
+        class="w-full lg:w-[55%] xl:w-[60%] h-[35vh] sm:h-[45vh] lg:h-auto bg-black relative flex-shrink-0 border-b lg:border-b-0 lg:border-r border-white/5">
+        <img id="modal-main-img" src="" alt="" class="w-full h-full object-cover animate-fade-in" loading="eager">
+      </div>
+
+      <!-- Información y Carrusel filtrado -->
+      <div class="w-full lg:w-[45%] xl:w-[40%] p-6 lg:p-8 flex flex-col justify-between overflow-y-auto">
+        <div class="mb-8">
+          <span id="modal-category-badge"
+            class="inline-block px-3 py-1 pb-1.5 rounded-full bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 text-xs font-black tracking-widest mb-4 uppercase"></span>
+          <h3 id="modal-title" class="text-3xl font-extrabold text-[#FDFBF8] mb-4 leading-tight"></h3>
+          <p id="modal-desc" class="text-[#A39385] text-base leading-relaxed"></p>
+        </div>
+
+        <div class="mt-auto">
+          <h4 class="text-xs font-bold text-[#A39385] uppercase tracking-widest mb-4 flex items-center gap-2">
+            Otras Vistas Disponibles
+            <span class="flex-grow h-px bg-white/5"></span>
+          </h4>
+
+          <!-- Carrusel Horizontal Accesible -->
+          <div id="modal-carousel" class="flex gap-4 overflow-x-auto pb-4 pt-1 px-1 -mx-1 snap-x snap-mandatory"
+            aria-label="Galería de imágenes relacionadas">
+            <!-- Miniaturas JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
