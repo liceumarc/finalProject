@@ -6,18 +6,18 @@ const categoryDescs = {
 };
 
 const galleryData = [
-    { id: 'fh0', cat: 'first-hotel', title: 'Suite Premium 1', desc: categoryDescs['first-hotel'], src: './public/img/first-hotel.webp' },
-    { id: 'sh0', cat: 'second-hotel', title: 'Habitación Doble 1', desc: categoryDescs['second-hotel'], src: './public/img/second-hotel.webp' },
-    { id: 'th0', cat: 'third-hotel', title: 'Sencilla Business 1', desc: categoryDescs['third-hotel'], src: './public/img/thrid-hotel.webp' },
-    { id: 'fh1', cat: 'first-hotel', title: 'Suite Premium 2', desc: categoryDescs['first-hotel'], src: './public/img/first-hotel-room.webp' },
-    { id: 'sh1', cat: 'second-hotel', title: 'Habitación Doble 2', desc: categoryDescs['second-hotel'], src: './public/img/second-hotel-pool.webp' },
-    { id: 'th1', cat: 'third-hotel', title: 'Sencilla Business 2', desc: categoryDescs['third-hotel'], src: './public/img/third-hotel-room.webp' },
-    { id: 'fh2', cat: 'first-hotel', title: 'Suite Premium 3', desc: categoryDescs['first-hotel'], src: './public/img/first-hotel-inside.webp' },
-    { id: 'sh2', cat: 'second-hotel', title: 'Habitación Doble 3', desc: categoryDescs['second-hotel'], src: './public/img/second-hotel-private-pool.webp' },
-    { id: 'th2', cat: 'third-hotel', title: 'Sencilla Business 3', desc: categoryDescs['third-hotel'], src: './public/img/third-hotel-room-big.webp' },
-    { id: 'fh3', cat: 'first-hotel', title: 'Suite Premium 4', desc: categoryDescs['first-hotel'], src: './public/img/first-hotel-checkin.webp' },
-    { id: 'sh3', cat: 'second-hotel', title: 'Habitación Doble 4', desc: categoryDescs['second-hotel'], src: './public/img/second-hotel-library.webp' },
-    { id: 'th3', cat: 'third-hotel', title: 'Sencilla Business 4', desc: categoryDescs['third-hotel'], src: './public/img/thrid-hotel.webp' }
+    { id: 'fh0', cat: 'first-hotel', title: 'Suite Premium 1', desc: categoryDescs['first-hotel'], src: '/img/first-hotel.webp' },
+    { id: 'sh0', cat: 'second-hotel', title: 'Habitación Doble 1', desc: categoryDescs['second-hotel'], src: '/img/second-hotel.webp' },
+    { id: 'th0', cat: 'third-hotel', title: 'Sencilla Business 1', desc: categoryDescs['third-hotel'], src: '/img/thrid-hotel.webp' },
+    { id: 'fh1', cat: 'first-hotel', title: 'Suite Premium 2', desc: categoryDescs['first-hotel'], src: '/img/first-hotel-room.webp' },
+    { id: 'sh1', cat: 'second-hotel', title: 'Habitación Doble 2', desc: categoryDescs['second-hotel'], src: '/img/second-hotel-pool.webp' },
+    { id: 'th1', cat: 'third-hotel', title: 'Sencilla Business 2', desc: categoryDescs['third-hotel'], src: '/img/third-hotel-room.webp' },
+    { id: 'fh2', cat: 'first-hotel', title: 'Suite Premium 3', desc: categoryDescs['first-hotel'], src: '/img/first-hotel-inside.webp' },
+    { id: 'sh2', cat: 'second-hotel', title: 'Habitación Doble 3', desc: categoryDescs['second-hotel'], src: '/img/second-hotel-private-pool.webp' },
+    { id: 'th2', cat: 'third-hotel', title: 'Sencilla Business 3', desc: categoryDescs['third-hotel'], src: '/img/third-hotel-room-big.webp' },
+    { id: 'fh3', cat: 'first-hotel', title: 'Suite Premium 4', desc: categoryDescs['first-hotel'], src: '/img/first-hotel-checkin.webp' },
+    { id: 'sh3', cat: 'second-hotel', title: 'Habitación Doble 4', desc: categoryDescs['second-hotel'], src: '/img/second-hotel-library.webp' },
+    { id: 'th3', cat: 'third-hotel', title: 'Sencilla Business 4', desc: categoryDescs['third-hotel'], src: '/img/thrid-hotel.webp' }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
