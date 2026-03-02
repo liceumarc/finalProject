@@ -7,9 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gran Hotel Paraíso - UX & Accesibilidad</title>
 
-  <!-- Carga Directa: Evitamos la cadena de solicitudes críticas en Lighthouse -->
+  <!-- Carga Directa y Preloads Críticos -->
+  <link rel="preload" as="image" href="/img/header-img.webp" fetchpriority="high">
+  <!-- Carga Directa Frontal -->
   <link rel="stylesheet" href="/src/style.css" />
-  <link rel="modulepreload" href="/src/main.js" />
+  <link defer rel="modulepreload" href="/src/main.js" />
 </head>
 
 <body class="antialiased">
